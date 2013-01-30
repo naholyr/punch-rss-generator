@@ -1,6 +1,6 @@
 {
-  "name": "punch-blog-rss-content-handler",
-  "version": "1.0.0",
+  "name": "punch-rss-generator",
+  "version": "2.0.0",
   "description": "Punch plugin to help you generate your RSS file along with Punch blog content handler",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/naholyr/punch-blog-rss-content-handler.git"
+    "url": "git://github.com/naholyr/punch-rss-generator.git"
   },
   "keywords": [
     "punch",
@@ -16,12 +16,18 @@
     "rss",
     "content"
   ],
-  "author": "Nicolas Chambrier <naholyr@gmail.com>",
+  "author": {
+    "name": "Nicolas Chambrier",
+    "email": "naholyr@gmail.com"
+  },
   "license": "BSD",
   "readmeFilename": "README.md",
   "peerDependencies": {
     "punch": "*",
     "punch-blog-content-handler": "*",
     "punch-fix-utf8": "*"
+  },
+  "dependencies": {
+    "juan-rss": "~0.1.3"
   }
 }

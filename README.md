@@ -1,5 +1,5 @@
-punch-blog-rss-content-handler
-==============================
+punch-rss-generator
+===================
 
 Generate your RSS file along with Punch blog content handler.
 
@@ -8,7 +8,7 @@ This plugin is intended to work with [punch blog content handler](https://github
 ## Installation
 
 ```
-npm install punch-blog-rss-content-handler
+npm install punch-rss-generator
 ```
 
 ### Note about dependencies
@@ -17,7 +17,6 @@ This will install following packages as **peer dependencies** (directly in **you
 
 * [punch](https://github.com/laktek/punch) as it will use its default content handler
 * [punch-blog-content-handler](https://github.com/laktek/punch-blog-content-handler) as it's a side-kick for this plugin
-* [punch-utf8-fix](https://github.com/naholyr/punch-utf8-fix) as you may face encoding issues generating a `.xml` file using content handler
 
 ## Usage
 
@@ -26,9 +25,8 @@ In your `config.json`:
 ```json
 {
   "plugins": {
-    "content_handler": "punch-blog-rss-content-handler",
     "generator_hooks": {
-      "fix_utf8": "punch-utf8-fix"
+      "rss_generator": "punch-rss-generator"
     }
   },
 
@@ -39,6 +37,8 @@ In your `config.json`:
   }
 }
 ```
+
+The RSS file will be created at generation time. As generators **are not called** by `punch server` you'll have to call `punch generate` to see it built.
 
 ## Configuration
 
@@ -61,25 +61,14 @@ Here are the different options you can set in `config.blog.rss`:
   "description": "",
 
   // Additional tag you would want to add in <channel> section
-  "channel": [
+  "channel": {
     // Default is empty, here are some examples:
-    // {"tag": "language",  "content": "en"},
-    // {"tag": "copyright", "content": "Nicolas Chambrier"},
-    // {"tag": "ttl",       "content": 1440}
+    // "language":  "en",
+    // "copyright": "Nicolas Chambrier",
+    // "ttl":       1440
   ],
 
   // Logo of your RSS feed (default is no image)
-  "image": {
-    // URL to the image (should be publicly accessible)
-    "url": "http://…",
-    // Link the image points to (should be the same value as site-url)
-    "link": "http://…"
-  }
+  "image": "http://…"
 }
 ```
-
-## Template
-
-Create your template file accordingly to your `config.blog.rss.url` option. Default will be `templates/rss.mustache`, but if you defined "url" as "/blog/my-rss.xml" it will be `templates/blog/my-rss.mustache`. That simple.
-
-You should copy and customize the provided `rss.mustache` (at root of this module), which is quite generic.
