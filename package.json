@@ -1,6 +1,6 @@
 {
   "name": "punch-rss-generator",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Punch plugin to help you generate your RSS file along with Punch blog content handler",
   "main": "index.js",
   "scripts": {
